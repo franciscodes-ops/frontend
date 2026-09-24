@@ -2,6 +2,7 @@
 
 import { Code2, Wallet as WalletIcon, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
 import { GITHUB_OAUTH_URL } from "@/lib/config";
 import { useAuth } from "@/context/AuthContext";
 import { useWallet } from "@/context/WalletContext";
@@ -25,10 +26,10 @@ export function ConnectPanel() {
         </p>
       </div>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <Card>
         <div className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
-            <Code2 className="h-5 w-5 text-white" />
+            <Code2 className="h-5 w-5 text-white" aria-hidden="true" />
           </span>
           <div>
             <p className="font-medium text-slate-900 dark:text-white">GitHub</p>
@@ -39,7 +40,7 @@ export function ConnectPanel() {
         </div>
         {user ? (
           <div className="mt-4 flex items-center gap-2 rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-700 ring-1 ring-inset ring-emerald-200">
-            <CheckCircle2 className="h-4 w-4" />
+            <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
             Signed in as @{user.username}
           </div>
         ) : (
@@ -47,12 +48,12 @@ export function ConnectPanel() {
             <Button className="w-full">Continue with GitHub</Button>
           </a>
         )}
-      </div>
+      </Card>
 
-      <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <Card>
         <div className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900">
-            <WalletIcon className="h-5 w-5 text-white" />
+            <WalletIcon className="h-5 w-5 text-white" aria-hidden="true" />
           </span>
           <div>
             <p className="font-medium text-slate-900 dark:text-white">Stellar wallet</p>
@@ -64,7 +65,7 @@ export function ConnectPanel() {
         {address ? (
           <>
             <div className="mt-4 flex items-center gap-2 rounded-lg bg-emerald-50 px-4 py-3 text-sm text-emerald-700 ring-1 ring-inset ring-emerald-200">
-              <CheckCircle2 className="h-4 w-4" />
+              <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
               Connected: {address.slice(0, 4)}...{address.slice(-4)} ({network})
             </div>
             {user?.stellarAddress && user.stellarAddress !== address && (
@@ -93,7 +94,7 @@ export function ConnectPanel() {
             {error}
           </p>
         )}
-      </div>
+      </Card>
     </div>
   );
 }
